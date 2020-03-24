@@ -3,26 +3,26 @@
     <button mat-icon-button aria-label="Example icon-button with a menu" (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+
     <span>{{ title }}</span>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-    <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+    <span class="spacer"></span>
+    <mat-icon aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-drawer-container class="example-container">
-  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+<mat-drawer-container class="container">
+  <mat-drawer #drawer [opened]="screenWidth > 600" [mode]="(screenWidth > 600) ? 'side' : 'over'">
     <mat-list role="list">
-      <mat-list-item role="listitem">Dashboard</mat-list-item>
+      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/']">Dashboard</a></mat-list-item>
       <mat-divider></mat-divider>
       <div mat-subheader>Rooms</div>
-      <mat-list-item role="listitem">Living Room</mat-list-item>
-      <mat-list-item role="listitem">Kitchen</mat-list-item>
-      <mat-list-item role="listitem">Floor</mat-list-item>
+      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/living-room']">Living Room</a></mat-list-item>
+      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/kitchen']">Kitchen</a></mat-list-item>
+      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/floor']">Floor</a></mat-list-item>
     </mat-list>
   </mat-drawer>
 
   <mat-drawer-content>
-    Main Content
+    <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

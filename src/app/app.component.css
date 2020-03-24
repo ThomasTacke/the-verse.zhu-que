@@ -1,25 +1,23 @@
-.example-container {
-  min-width: 500px;
-  min-height: 400px;
-  height: calc(100% - 64px); /* -64px cause thats the height of the toolbar */
+.spacer {
+  width: 100vw;;
+}
+
+.sidenav-link {
   width: 100%;
+  text-align: left;
 }
 
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+@media screen and (min-width: 600px) {
+  .container {
+    height: calc(100% - 64px); /* -64px cause thats the height of the toolbar */
+    width: 100%;
+  }
 }
 
-.example-sidenav {
-  padding: 20px;
+@media screen and (max-width: 599px) {
+  .container {
+    height: calc(100% - 56px); /* -56px cause thats the height of the toolbar on mobil*/
+    width: 100%;
+  }
 }
 
-.example-icon {
-  padding: 0 14px;
-}
-
-.example-spacer {
-  flex: 1 1 auto;
-}
