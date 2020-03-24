@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  dev:
+    image: registry.gitlab.com/smart-home-the-verse/zhu-que:dev
+    container_name: zhu-que-dev
+    build: 
+      context: .
+      target: dev
+    volumes: 
+      - .:/usr/src/app
+    environment: 
+      - NODE_ENV=development
+    working_dir: /usr/src/app
+    ports:
+      - 4200:4200
+    stdin_open: true
+    tty: true
+    command: [ "npm", "run", "start" ]
+
+  web:
+    image: registry.gitlab.com/smart-home-the-verse/zhu-que:latest
+    container_name: zhu-que
+    build:
+      context: .
+      target: prod
+    ports:
+      - 80:3000
+    restart: on-failure
