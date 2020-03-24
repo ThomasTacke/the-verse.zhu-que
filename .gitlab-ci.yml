@@ -13,11 +13,13 @@ build:
     - docker build --target prod -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
 
-test_async:
+test_karma:
   stage: test
+  image: trion/ng-cli-karma
+  allow_failure: true #TODO: Change this later. Currently there are no tests.
   script:
     - npm install
-    - npm run test
+    - ng test --code-coverage --progress false --watch false
 
 docker-build:
   image: docker:latest
@@ -34,7 +36,7 @@ docker-build:
 
 stages:
   - build
-  # - test
+  - test
   - deploy
 
 include:
@@ -43,7 +45,7 @@ include:
   - template: SAST.gitlab-ci.yml
   - template: Container-Scanning.gitlab-ci.yml
   - template: Code-Quality.gitlab-ci.yml
-  
+
 code_quality:
   artifacts:
     paths: [gl-code-quality-report.json]
