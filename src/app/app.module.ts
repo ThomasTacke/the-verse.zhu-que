@@ -7,23 +7,21 @@ import { CustomMaterialModule } from './core/material.module';
 import { MqttModule, IMqttServiceOptions } from 'ngx-mqtt';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { RoomsComponent } from './rooms/rooms.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { KitchenComponent } from './kitchen/kitchen.component';
-import { FloorComponent } from './floor/floor.component';
-import { LivingRoomComponent } from './living-room/living-room.component';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
-  hostname: '192.168.42.45',
-  port: 9001
+  hostname: 'localhost',
+  port: 4200,
+  path: '/the-verse',
+  protocol: 'ws'
 };
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    KitchenComponent,
-    FloorComponent,
-    LivingRoomComponent
+    RoomsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
