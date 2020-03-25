@@ -1,14 +1,14 @@
 <div class="card-container">
-  <h3>{{title}}</h3>
+  <h3>{{room.room}}</h3>
   <div class="test">
-    <div class="example-card" *ngFor="let sensor of livingRoom.sensor">
-      <mat-card>
+    <div class="example-card" *ngFor="let sensor of room.sensors">
+      <mat-card *ngIf="sensor.value | async">
         <mat-card-header>
           <mat-icon mat-card-avatar aria-hidden="false" svgIcon="{{sensor.svgIcon}}"></mat-icon>
-          <mat-card-title>{{sensor.value}}</mat-card-title>
+          <mat-card-title>{{(sensor.value | async)?.payload}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          {{sensor.sensor}}
+          {{getDiff(sensor)|async}} {{sensor.name}}
         </mat-card-content>
       </mat-card>
     </div>
