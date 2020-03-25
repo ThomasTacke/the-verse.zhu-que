@@ -32,7 +32,15 @@ export class RoomsComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.room.sensors.forEach(sensor => {
+    this.doDiff(this.room.sensors);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  public doDiff(sensors: Sensor[]) {
+    sensors.forEach(sensor => {
       const obs = sensor.value.pipe(
         tap(console.log),
         map(message => message.payload.toString()),
@@ -56,10 +64,6 @@ export class RoomsComponent implements OnInit, OnDestroy {
 
       this.$sensorValues.set(sensor.name, obs);
     });
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 
   public getDiff(sensor: Sensor): Observable<string> {

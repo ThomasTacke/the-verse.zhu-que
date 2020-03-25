@@ -1,8 +1,8 @@
 .card-container {
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
   padding-left: 10px;
+  padding-top: 10px;
   width: calc(100% -10px); /* -10px for padding */
 }
 
@@ -24,7 +24,7 @@
   }
 
   .example-card {
-    padding-top: 10px;
     padding-right: 10px;
+    padding-top: 10px;
   }
 }
