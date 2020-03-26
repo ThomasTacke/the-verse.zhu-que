@@ -1,16 +1,16 @@
 # Base image
 FROM node AS base
 WORKDIR /usr/src/app
-RUN npm install -g @angular/cli
 
+# Just a breakpoint to stop for dev
 FROM base AS dev
-COPY package*.json ./
-RUN npm install
 
 # Build image
 FROM base AS build
-COPY . .
+COPY package*.json ./
 RUN npm install
+COPY . .
+RUN yarn global add @angular/cli
 RUN ng build --output-path=dist --prod --base-href /
 
 # Prod Iimage
