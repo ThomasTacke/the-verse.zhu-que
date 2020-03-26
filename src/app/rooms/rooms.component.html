@@ -1,7 +1,7 @@
-<div class="card-container">
+<div class="content-container">
   <h3>{{room.room}}</h3>
-  <div class="test">
-    <div class="example-card" *ngFor="let sensor of room.sensors">
+  <div class="cards-container">
+    <div class="card" *ngFor="let sensor of room.sensors">
       <mat-card *ngIf="sensor.value | async">
         <mat-card-header>
           <mat-icon mat-card-avatar aria-hidden="false" svgIcon="{{sensor.svgIcon}}"></mat-icon>

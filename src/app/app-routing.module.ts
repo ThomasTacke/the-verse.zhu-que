@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'living-room', component: RoomsComponent, data: { rooms: ['livingRoom'] } },
   { path: 'kitchen', component: RoomsComponent, data: { rooms: ['kitchen'] } },
   { path: 'floor', component: RoomsComponent, data: { rooms: ['floor'] } },
+  { path: 'bathroom', component: RoomsComponent, data: { rooms: ['bathroom'] } }
 ];
 
 @NgModule({
