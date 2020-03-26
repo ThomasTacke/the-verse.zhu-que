@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Room, MqttHandlerService, Sensor } from '../service/mqtt-handler.service';
+import { MqttHandlerService } from '../service/mqtt-handler.service';
 import { Observable } from 'rxjs';
-import { tap, map, bufferCount } from 'rxjs/operators';
+import { map, bufferCount } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { Room } from '../models/room';
+import { Sensor } from '../models/sensor';
 
 @Component({
   selector: 'app-rooms',
@@ -42,10 +44,10 @@ export class RoomsComponent implements OnInit, OnDestroy {
   public doDiff(sensors: Sensor[]) {
     sensors.forEach(sensor => {
       const obs = sensor.value.pipe(
-        tap(console.log),
+        // tap(console.log),
         map(message => message.payload.toString()),
         bufferCount(2, 1),
-        tap(console.log),
+        // tap(console.log),
         map((payload: string[]) => {
           const content1 = Number(payload[0]);
           const content2 = Number(payload[1]);
@@ -59,8 +61,8 @@ export class RoomsComponent implements OnInit, OnDestroy {
             }
             return 'noChange';
           }
-        }),
-        tap(console.log));
+        }));
+        // tap(console.log));
 
       this.$sensorValues.set(sensor.name, obs);
     });
