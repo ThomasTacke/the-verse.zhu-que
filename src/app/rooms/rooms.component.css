@@ -1,4 +1,4 @@
-.card-container {
+.content-container {
   display: flex;
   flex-direction: column;
   padding-left: 10px;
@@ -6,25 +6,29 @@
   width: calc(100% -10px); /* -10px for padding */
 }
 
-@media screen and (min-width: 600px) {
-  .test {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .example-card {
-    padding-right: 10px;
-  }
+.card {
+  padding-right: 10px;
+  padding-top: 10px;
+  min-width: 200px;
+  flex: 0 1 calc(33.3% - 32px);
 }
 
-@media screen and (max-width: 599px) {
-  .test {
+/* @media screen and (min-width: 600px) { */
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+/* } */
+
+/* @media screen and (max-width: 599px) {
+  .cards-container {
     display: flex;
     flex-direction: column;
   }
 
-  .example-card {
-    padding-right: 10px;
-    padding-top: 10px;
+  .card {
+    width: 100%;
   }
-}
+} */
