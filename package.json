@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "docker:buildx": "DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build --platform linux/arm64,linux/amd64,linux/arm/v7 --push -t rootthekid/zhu-que:latest  ."
+    "docker:buildx": "DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build --platform linux/arm/v7 --push -t rootthekid/zhu-que:latest  ."
   },
   "private": true,
   "dependencies": {
@@ -33,7 +33,7 @@
     "@angular/cli": "~9.0.7",
     "@angular/compiler-cli": "~9.0.7",
     "@angular/language-service": "~9.0.7",
-    "@smart-home-the-verse/the-halo": "0.0.1",
+    "@smart-home-the-verse/the-halo": "^0.0.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",

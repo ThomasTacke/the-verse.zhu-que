@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Room } from '@smart-home-the-verse/the-halo';
 import { SensorsService } from 'src/app/services/sensors.service';
+import { UiRoom } from 'src/app/@types';
 
 @Component({
   selector: 'app-lights',
@@ -8,7 +8,7 @@ import { SensorsService } from 'src/app/services/sensors.service';
   styleUrls: ['./lights.component.css']
 })
 export class LightsComponent implements OnInit {
-  lights: Room = {
+  lights: UiRoom = {
     Name: 'Lights',
     Sensors: [
       this.sensorsService.allLights,

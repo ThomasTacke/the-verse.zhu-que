@@ -7,10 +7,12 @@ FROM base AS dev
 
 # Build image
 FROM base AS build
+RUN npm config set @smart-home-the-verse:registry https://gitlab.com/api/v4/packages/npm/
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN yarn global add @angular/cli
+RUN yarn global add @angular/cli@9.0.7
+# RUN npm install -g @angular/cli@9.0.7
 RUN ng build --output-path=dist --prod --base-href /
 
 # Prod Iimage

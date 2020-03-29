@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UiSensor, SENSOR_TYPE } from '../@types';
+import { UiSensor } from '../@types';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MqttService } from 'ngx-mqtt';
+import { SENSOR_TYPE } from '@smart-home-the-verse/the-halo';
 
 @Component({
   selector: 'app-sensor-card',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UiSensor, ICONS, SENSOR_TYPE } from '../@types';
-import { DEVICE } from '@smart-home-the-verse/the-halo';
+import { UiSensor, ICONS } from '../@types';
+import { DEVICE, SENSOR_TYPE } from '@smart-home-the-verse/the-halo';
 import { BehaviorSubject } from 'rxjs';
 import { MqttService } from 'ngx-mqtt';
 import { map, tap } from 'rxjs/operators';
