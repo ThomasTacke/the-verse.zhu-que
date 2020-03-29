@@ -9,11 +9,12 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { RoomsComponent } from './rooms/rooms.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { environment } from '../environments/environment';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
-  hostname: 'localhost',
-  port: 4200,
-  path: '/the-verse',
+  hostname:  environment.mqttBroker.hostname,
+  port: environment.mqttBroker.port,
+  path: environment.mqttBroker.path,
   protocol: 'ws'
 };
 

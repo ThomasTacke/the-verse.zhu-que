@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  mqttBroker: {
+  mattBrokerHostname: '',
+    hostname: 'localhost',
+    port: 4200,
+    path: '/the-verse',
+    protocol: 'ws'
+  }
 };
 
 /*
