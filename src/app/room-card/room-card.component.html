@@ -1,6 +1,6 @@
 <div class="content-container">
   <h3>{{room.Name}}</h3>
   <div class="cards-container">
-    <app-sensor-card class="card" *ngFor="let sensor of room.Sensors" [sensor]="sensor"></app-sensor-card>
+    <app-sensor-card class="card" *ngFor="let sensor of room.Sensors | async" [sensor]="sensor"></app-sensor-card>
   </div>
 </div>

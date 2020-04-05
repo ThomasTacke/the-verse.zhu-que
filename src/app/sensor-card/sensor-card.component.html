@@ -1,4 +1,4 @@
-<mat-card *ngIf="sensor.Value | async">
+<mat-card>
   <mat-card-header>
     <mat-icon mat-card-avatar aria-hidden="false" svgIcon="{{sensor.SvgIcon | async}}"></mat-icon>
     <mat-card-title>{{sensor.Value | async}}<mat-slide-toggle [checked]="sensor.LightState | async" (change)="sliderChange($event)" class="slider" color="primary" *ngIf="sensor.Type === type"></mat-slide-toggle></mat-card-title>

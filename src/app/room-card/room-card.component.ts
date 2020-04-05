@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Room } from '@smart-home-the-verse/the-halo';
-import { ActivatedRoute } from '@angular/router';
+import { UiRoom } from '../@types';
 
 @Component({
   selector: 'app-room-card',
@@ -8,9 +7,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./room-card.component.css']
 })
 export class RoomCardComponent implements OnInit {
-  @Input() room: Room;
+  @Input() room: UiRoom;
+
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
 }

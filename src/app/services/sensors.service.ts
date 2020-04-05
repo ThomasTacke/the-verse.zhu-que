@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { UiSensor, ICONS } from '../@types';
+import { UiSensor, ICONS, ROOMS } from '../@types';
 import { DEVICE, SENSOR_TYPE } from '@smart-home-the-verse/the-halo';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { MqttService } from 'ngx-mqtt';
 import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -17,7 +17,8 @@ export class SensorsService {
     SvgIcon: new BehaviorSubject<string>(ICONS.LIGHTBULB_OFF),
     Type: SENSOR_TYPE.LIGHT,
     Value: new BehaviorSubject<string>(null),
-    LightState: new BehaviorSubject<boolean>(false)
+    LightState: new BehaviorSubject<boolean>(false),
+    Room: ROOMS.KITCHEN
   };
   kitchenTadoTemperature: UiSensor = {
     Name: 'Temperature',
@@ -25,7 +26,8 @@ export class SensorsService {
     Topic: 'the-verse/kitchen/tado/temperature',
     SvgIcon: new BehaviorSubject<string>(ICONS.TEMPERATURE),
     Type: SENSOR_TYPE.TEMPERATURE,
-    Value: new BehaviorSubject<string>(null)
+    Value: new BehaviorSubject<string>(null),
+    Room: ROOMS.KITCHEN
   };
   kitchenTadoHumidity: UiSensor = {
     Name: 'Humidity',
@@ -33,7 +35,8 @@ export class SensorsService {
     Topic: 'the-verse/kitchen/tado/humidity',
     SvgIcon: new BehaviorSubject<string>(ICONS.HUMIDITY),
     Type: SENSOR_TYPE.HUMIDITY,
-    Value: new BehaviorSubject<string>(null)
+    Value: new BehaviorSubject<string>(null),
+    Room: ROOMS.KITCHEN
   };
   kitchenNodeMcuTemperature: UiSensor = {
     Name: 'Temperature',
@@ -41,7 +44,8 @@ export class SensorsService {
     Topic: 'the-verse/kitchen/temperature',
     SvgIcon: new BehaviorSubject<string>(ICONS.TEMPERATURE),
     Type: SENSOR_TYPE.TEMPERATURE,
-    Value: new BehaviorSubject<string>(null)
+    Value: new BehaviorSubject<string>(null),
+    Room: ROOMS.KITCHEN
   };
   kitchenNodeMmcuHumidity: UiSensor = {
     Name: 'Humidity',
@@ -49,7 +53,8 @@ export class SensorsService {
     Topic: 'the-verse/kitchen/humidity',
     SvgIcon: new BehaviorSubject<string>(ICONS.HUMIDITY),
     Type: SENSOR_TYPE.HUMIDITY,
-    Value: new BehaviorSubject<string>(null)
+    Value: new BehaviorSubject<string>(null),
+    Room: ROOMS.KITCHEN
   };
 
   floorNodeMcuTemperature: UiSensor = {
@@ -58,7 +63,8 @@ export class SensorsService {
     Topic: 'the-verse/floor/temperature',
     SvgIcon: new BehaviorSubject<string>(ICONS.TEMPERATURE),
     Type: SENSOR_TYPE.TEMPERATURE,
-    Value: new BehaviorSubject<string>(null)
+    Value: new BehaviorSubject<string>(null),
+    Room: ROOMS.FLOOR
   };
   floorNodeMcuHumidity = {
     Name: 'Humidity',
@@ -66,7 +72,8 @@ export class SensorsService {
     Topic: 'the-verse/floor/humidity',
     SvgIcon: new BehaviorSubject<string>(ICONS.HUMIDITY),
     Type: SENSOR_TYPE.HUMIDITY,
-    Value: new BehaviorSubject<string>(null)
+    Value: new BehaviorSubject<string>(null),
+    Room: ROOMS.FLOOR
   };
 
   bathroomTadoTemperature: UiSensor = {
@@ -75,7 +82,8 @@ export class SensorsService {
     Topic: 'the-verse/bathroom/tado/temperature',
     SvgIcon: new BehaviorSubject<string>(ICONS.TEMPERATURE),
     Type: SENSOR_TYPE.TEMPERATURE,
-    Value: new BehaviorSubject<string>(null)
+    Value: new BehaviorSubject<string>(null),
+    Room: ROOMS.BATHROOM
   };
   bathroomTadoHumidity: UiSensor = {
     Name: 'Humidity',
@@ -83,7 +91,8 @@ export class SensorsService {
     Topic: 'the-verse/bathroom/tado/humidity',
     SvgIcon: new BehaviorSubject<string>(ICONS.HUMIDITY),
     Type: SENSOR_TYPE.HUMIDITY,
-    Value: new BehaviorSubject<string>(null)
+    Value: new BehaviorSubject<string>(null),
+    Room: ROOMS.BATHROOM
   };
 
   livingRoomTadoTemperature: UiSensor = {
@@ -92,7 +101,8 @@ export class SensorsService {
     Topic: 'the-verse/living-room/tado/temperature',
     SvgIcon: new BehaviorSubject<string>(ICONS.TEMPERATURE),
     Type: SENSOR_TYPE.TEMPERATURE,
-    Value: new BehaviorSubject<string>(null)
+    Value: new BehaviorSubject<string>(null),
+    Room: ROOMS.LIVING_ROOM
   };
   livingRoomTadoHumidity: UiSensor = {
     Name: 'Humidity',
@@ -100,7 +110,8 @@ export class SensorsService {
     Topic: 'the-verse/living-room/tado/humidity',
     SvgIcon: new BehaviorSubject<string>(ICONS.HUMIDITY),
     Type: SENSOR_TYPE.HUMIDITY,
-    Value: new BehaviorSubject<string>(null)
+    Value: new BehaviorSubject<string>(null),
+    Room: ROOMS.LIVING_ROOM
   };
   livingRoomLightVitrine: UiSensor = {
     Name: 'Light Vitrine',
@@ -109,7 +120,8 @@ export class SensorsService {
     SvgIcon: new BehaviorSubject<string>(ICONS.LIGHTBULB_OFF),
     Type: SENSOR_TYPE.LIGHT,
     Value: new BehaviorSubject<string>(null),
-    LightState: new BehaviorSubject<boolean>(false)
+    LightState: new BehaviorSubject<boolean>(false),
+    Room: ROOMS.LIVING_ROOM
   };
   livingRoomLightNightStand: UiSensor = {
     Name: 'Light Nightstand',
@@ -118,7 +130,8 @@ export class SensorsService {
     SvgIcon: new BehaviorSubject<string>(ICONS.LIGHTBULB_OFF),
     Type: SENSOR_TYPE.LIGHT,
     Value: new BehaviorSubject<string>(null),
-    LightState: new BehaviorSubject<boolean>(false)
+    LightState: new BehaviorSubject<boolean>(false),
+    Room: ROOMS.LIVING_ROOM
   };
   allLights: UiSensor = {
     Name: 'All Lights',
@@ -129,6 +142,24 @@ export class SensorsService {
     Value: new BehaviorSubject<string>(null),
     LightState: new BehaviorSubject<boolean>(false)
   };
+
+  private _devices: Array<UiSensor> = [
+    this.kitchenLightPc,
+    this.kitchenNodeMcuTemperature,
+    this.kitchenNodeMmcuHumidity,
+    this.kitchenTadoTemperature,
+    this.kitchenTadoHumidity,
+    this.livingRoomLightNightStand,
+    this.livingRoomLightVitrine,
+    this.livingRoomTadoTemperature,
+    this.livingRoomTadoHumidity,
+    this.floorNodeMcuTemperature,
+    this.floorNodeMcuHumidity,
+    this.bathroomTadoTemperature,
+    this.bathroomTadoHumidity,
+    this.allLights
+  ];
+  public devices: BehaviorSubject<UiSensor[]> = new BehaviorSubject(this._devices);
 
   constructor(private mqttService: MqttService) {
     this.sensorSubscribtions();
@@ -172,4 +203,26 @@ export class SensorsService {
         }
       })).subscribe();
   }
+
+  public addSensor(sensor: UiSensor) {
+    this._devices.push(sensor);
+    this.devices.next(this._devices);
+    this.sensorSubscribe(sensor);
+  }
+
+  public lights: Observable<Array<UiSensor>> = this.devices.pipe(
+    map(devices$ => devices$.filter(device => device.Type === SENSOR_TYPE.LIGHT)
+  ));
+  public kitchen: Observable<Array<UiSensor>> = this.devices.pipe(
+    map(devices$ => devices$.filter(device => device.Room === ROOMS.KITCHEN)
+  ));
+  public bathroom: Observable<Array<UiSensor>> = this.devices.pipe(
+    map(devices$ => devices$.filter(device => device.Room === ROOMS.BATHROOM)
+  ));
+  public livingroom: Observable<Array<UiSensor>> = this.devices.pipe(
+    map(devices$ => devices$.filter(device => device.Room === ROOMS.LIVING_ROOM)
+  ));
+  public floor: Observable<Array<UiSensor>> = this.devices.pipe(
+    map(devices$ => devices$.filter(device => device.Room === ROOMS.FLOOR)
+  ));
 }

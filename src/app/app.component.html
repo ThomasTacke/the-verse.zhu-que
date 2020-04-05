@@ -13,19 +13,31 @@
 <mat-drawer-container class="container">
   <mat-drawer #drawer [opened]="screenWidth > 600" [mode]="(screenWidth > 600) ? 'side' : 'over'">
     <mat-list role="list">
-      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/']">Dashboard</a></mat-list-item>
+      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/']">Dashboard</a>
+      </mat-list-item>
       <mat-divider></mat-divider>
-      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/lights']">Lights</a></mat-list-item>
+      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/lights']">Lights</a>
+      </mat-list-item>
       <mat-divider></mat-divider>
       <div mat-subheader>Rooms</div>
-      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/living-room']">Living Room</a></mat-list-item>
-      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/kitchen']">Kitchen</a></mat-list-item>
-      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/floor']">Floor</a></mat-list-item>
-      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/bathroom']">Bathroom</a></mat-list-item>
+      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/living-room']">Living Room</a>
+      </mat-list-item>
+      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/kitchen']">Kitchen</a>
+      </mat-list-item>
+      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/floor']">Floor</a>
+      </mat-list-item>
+      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/bathroom']">Bathroom</a>
+      </mat-list-item>
     </mat-list>
   </mat-drawer>
 
   <mat-drawer-content>
     <router-outlet></router-outlet>
+
+    <div class="add-device-fab">
+      <button color="primary" mat-button mat-fab (click)="openAddDeviceDialog()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>

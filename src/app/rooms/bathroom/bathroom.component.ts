@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Room } from '@smart-home-the-verse/the-halo';
-import { RoomsService } from 'src/app/services/rooms.service';
+import { UiRoom, ROOMS } from 'src/app/@types';
+import { SensorsService } from 'src/app/services/sensors.service';
 
 @Component({
   selector: 'app-bathroom',
@@ -8,11 +8,12 @@ import { RoomsService } from 'src/app/services/rooms.service';
   styleUrls: ['./bathroom.component.css']
 })
 export class BathroomComponent implements OnInit {
-  room: Room;
-  constructor(private roomsService: RoomsService) { }
-
-  ngOnInit(): void {
-    this.room = this.roomsService.bathroom;
+  room: UiRoom = {
+    Name: ROOMS.BATHROOM,
+    Sensors: this.sensorService.bathroom
   }
+  constructor(private sensorService: SensorsService) { }
+
+  ngOnInit(): void { }
 
 }

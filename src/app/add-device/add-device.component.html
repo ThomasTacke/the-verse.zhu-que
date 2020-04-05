@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Add Device</h1>
+<div mat-dialog-content>
+  <p>Sensor Device</p>
+  <mat-form-field class="test">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="sensor.Name">
+  </mat-form-field>
+  <mat-form-field class="test">
+    <mat-label>Topic</mat-label>
+    <input matInput [(ngModel)]="sensor.Topic">
+  </mat-form-field>
+  <mat-form-field class="test">
+    <mat-label>Device</mat-label>
+    <input matInput [(ngModel)]="sensor.Device">
+  </mat-form-field>
+  <mat-form-field class="test">
+    <mat-label>Type</mat-label>
+    <input matInput [(ngModel)]="sensor.Type">
+  </mat-form-field>
+  <mat-form-field class="test">
+    <mat-label>Icon</mat-label>
+    <input matInput [(ngModel)]="sensor.SvgIcon">
+  </mat-form-field>
+  <mat-form-field class="test">
+    <mat-label>Room</mat-label>
+    <input matInput [(ngModel)]="sensor.Room">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="sensor" cdkFocusInitial>Ok</button>
+</div>

@@ -10,16 +10,11 @@ import { UiRoom } from 'src/app/@types';
 export class LightsComponent implements OnInit {
   lights: UiRoom = {
     Name: 'Lights',
-    Sensors: [
-      this.sensorsService.allLights,
-      this.sensorsService.kitchenLightPc,
-      this.sensorsService.livingRoomLightVitrine,
-      this.sensorsService.livingRoomLightNightStand
-    ]
+    Sensors: this.sensorsService.lights
   };
+
   constructor(private sensorsService: SensorsService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

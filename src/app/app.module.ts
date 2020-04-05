@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,12 +11,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { environment } from '../environments/environment';
 import { SensorCardComponent } from './sensor-card/sensor-card.component';
-import { RoomCardComponent } from './room-card/room-card.component';
 import { LivingRoomComponent } from './rooms/living-room/living-room.component';
 import { BathroomComponent } from './rooms/bathroom/bathroom.component';
 import { FloorComponent } from './rooms/floor/floor.component';
 import { KitchenComponent } from './rooms/kitchen/kitchen.component';
 import { LightsComponent } from './actuators/lights/lights.component';
+import { AddDeviceComponent } from './add-device/add-device.component';
+import { RoomCardComponent } from './room-card/room-card.component';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname:  environment.mqttBroker.hostname,
@@ -29,14 +31,17 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     AppComponent,
     DashboardComponent,
     SensorCardComponent,
-    RoomCardComponent,
     LivingRoomComponent,
     BathroomComponent,
     FloorComponent,
     KitchenComponent,
-    LightsComponent
+    LightsComponent,
+    AddDeviceComponent,
+    RoomCardComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

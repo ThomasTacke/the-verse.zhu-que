@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Room } from '@smart-home-the-verse/the-halo';
-import { RoomsService } from 'src/app/services/rooms.service';
+import { SensorsService } from 'src/app/services/sensors.service';
+import { UiRoom, ROOMS } from 'src/app/@types';
 
 @Component({
   selector: 'app-floor',
@@ -8,11 +8,12 @@ import { RoomsService } from 'src/app/services/rooms.service';
   styleUrls: ['./floor.component.css']
 })
 export class FloorComponent implements OnInit {
-  room: Room;
-  constructor(private roomsService: RoomsService) { }
+  room: UiRoom = {
+    Name: ROOMS.FLOOR,
+    Sensors: this.sensorsService.floor
+  };
+  constructor(private sensorsService: SensorsService) { }
 
-  ngOnInit(): void {
-    this.room = this.roomsService.floor;
-  }
+  ngOnInit(): void { }
 
 }
