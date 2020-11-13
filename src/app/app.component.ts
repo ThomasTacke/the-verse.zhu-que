@@ -5,6 +5,8 @@ import { UiSensor, ICONS } from './@types';
 import { DEVICE, SENSOR_TYPE } from '@smart-home-the-verse/the-halo';
 import { BehaviorSubject } from 'rxjs';
 import { SensorsService } from './services/sensors.service';
+import { QingLongService } from './services/qing-long.service';
+import { AddRoomComponent } from './add-room/add-room.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,14 @@ import { SensorsService } from './services/sensors.service';
 export class AppComponent {
   title = 'Zhu Que - Red Phoenix';
   screenWidth: number;
+  rooms: Array<any>;
+  room: {
+    name: string,
+    shortname: string
+  } = {
+      name: '',
+      shortname: ''
+    }
 
   sensor: UiSensor = {
     Name: '',
@@ -25,11 +35,17 @@ export class AppComponent {
     LightState: new BehaviorSubject(false)
   };
 
-  constructor(public dialog: MatDialog, private sensorService: SensorsService) {
+  constructor(public dialog: MatDialog,
+    private sensorService: SensorsService,
+    private qingLongService: QingLongService,
+  ) {
+    this.screenWidth = window.innerWidth;
+    window.onresize = () => {
       this.screenWidth = window.innerWidth;
-      window.onresize = () => {
-        this.screenWidth = window.innerWidth;
-      };
+    };
+    this.qingLongService.getRooms().subscribe((rooms: any) => {
+      this.rooms = rooms.rooms;
+    });
   }
 
   openAddDeviceDialog(): void {
@@ -40,11 +56,30 @@ export class AppComponent {
 
     dialogRef.afterClosed().subscribe((result: UiSensor) => {
       console.log(result)
-      this.sensor = result;
-      console.log(this.sensor);
-      console.log(this.sensorService.devices);
-      this.sensorService.addSensor(result);
-      console.log(this.sensorService.devices);
+      if (result) {
+        this.sensor = result;
+        console.log(this.sensor);
+        console.log(this.sensorService.devices);
+        this.sensorService.addSensor(result);
+        console.log(this.sensorService.devices);
+      }
+    });
+  }
+
+  openAddRoomDialog(): void {
+    const dialogRef = this.dialog.open(AddRoomComponent, {
+      width: '250px',
+      data: this.room
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(result);
+      if (result) {
+        this.qingLongService.setRoom(result).subscribe((result: any) => {
+          console.log(result);
+          this.rooms.push(result);
+        });
+      }
     });
   }
 }

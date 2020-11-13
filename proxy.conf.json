@@ -1,7 +1,11 @@
 {
   "/the-verse": {
-    "target": "ws://192.168.42.45:9001",
+    "target": "ws://localhost:9001",
     "secure": false,
     "ws": true
+  },
+  "/qing-long/v1": {
+    "target": "http://localhost:3002",
+    "secure": false
   }
 }

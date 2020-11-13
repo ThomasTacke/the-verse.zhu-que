@@ -6,7 +6,8 @@
 
     <span>{{ title }}</span>
     <span class="spacer"></span>
-    <mat-icon aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Account/Login">account_circle</mat-icon>
+    <!-- <mat-icon aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon> -->
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -20,24 +21,33 @@
       </mat-list-item>
       <mat-divider></mat-divider>
       <div mat-subheader>Rooms</div>
-      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/living-room']">Living Room</a>
+
+      <mat-list-item *ngFor="let room of rooms" role="listitem">
+        <a class="sidenav-link" mat-button [routerLink]="['/room/', room.id]">{{room.name}}</a>
       </mat-list-item>
-      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/kitchen']">Kitchen</a>
-      </mat-list-item>
-      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/floor']">Floor</a>
-      </mat-list-item>
-      <mat-list-item role="listitem"><a class="sidenav-link" mat-button [routerLink]="['/bathroom']">Bathroom</a>
+
+      <mat-list-item role="listitem"><a class="sidenav-link" mat-button color="accent" (click)="openAddRoomDialog()">Add
+          Room</a>
       </mat-list-item>
     </mat-list>
+
+    <app-db-overview></app-db-overview>
   </mat-drawer>
 
   <mat-drawer-content>
     <router-outlet></router-outlet>
 
     <div class="add-device-fab">
-      <button color="primary" mat-button mat-fab (click)="openAddDeviceDialog()">
+      <button color="primary" mat-button mat-mini-fab (click)="openAddDeviceDialog()">
         <mat-icon>add</mat-icon>
       </button>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
+
+<!-- <mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Coded With <mat-icon aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon> by Root the
+      Kid</span>
+  </mat-toolbar-row>
+</mat-toolbar> -->

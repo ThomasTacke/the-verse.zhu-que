@@ -11,7 +11,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     MatAutocompleteModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule
   ],
   exports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     MatAutocompleteModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule
   ]
 })
 export class CustomMaterialModule { }

@@ -5,11 +5,17 @@
 export const environment = {
   production: false,
   mqttBroker: {
-  mattBrokerHostname: '',
+    mattBrokerHostname: '',
     hostname: 'localhost',
     port: 4200,
     path: '/the-verse',
     protocol: 'ws'
+  },
+  qingLong: {
+    hostname: 'localhost',
+    port: 4200,
+    path: '/qing-long/v1',
+    protocol: 'http'
   }
 };
 

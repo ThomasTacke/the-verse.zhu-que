@@ -11,13 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { environment } from '../environments/environment';
 import { SensorCardComponent } from './sensor-card/sensor-card.component';
-import { LivingRoomComponent } from './rooms/living-room/living-room.component';
-import { BathroomComponent } from './rooms/bathroom/bathroom.component';
-import { FloorComponent } from './rooms/floor/floor.component';
-import { KitchenComponent } from './rooms/kitchen/kitchen.component';
 import { LightsComponent } from './actuators/lights/lights.component';
 import { AddDeviceComponent } from './add-device/add-device.component';
 import { RoomCardComponent } from './room-card/room-card.component';
+import { AddRoomComponent } from './add-room/add-room.component';
+import { DbOverviewComponent } from './db-overview/db-overview.component';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname:  environment.mqttBroker.hostname,
@@ -31,13 +29,11 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     AppComponent,
     DashboardComponent,
     SensorCardComponent,
-    LivingRoomComponent,
-    BathroomComponent,
-    FloorComponent,
-    KitchenComponent,
     LightsComponent,
     AddDeviceComponent,
-    RoomCardComponent
+    RoomCardComponent,
+    AddRoomComponent,
+    DbOverviewComponent
   ],
   imports: [
     FormsModule,

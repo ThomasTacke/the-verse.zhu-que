@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Add Room</h1>
+<div mat-dialog-content>
+  <mat-form-field class="test">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="room.name">
+  </mat-form-field>
+  <mat-form-field class="test">
+    <mat-label>Shortname</mat-label>
+    <input matInput [(ngModel)]="room.shortname">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="room" cdkFocusInitial>Ok</button>
+</div>
